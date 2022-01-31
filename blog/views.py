@@ -1,10 +1,10 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from .models import Post
+from .models import Post, Banco
 from .forms import PostForm, EditForm
 from django.urls import reverse_lazy
   
-# Create your views here. 
+###################### POST
 # Home / ListView
 class HomeView(ListView):
     queryset = Post.objects.order_by('-created_on') #Negativo para el Sort
@@ -36,3 +36,13 @@ class DeletePostView(DeleteView):
     model = Post
     template_name = 'delete_post.html'
     success_url = reverse_lazy('home')  #Para el borrado es necesario
+    
+###################### BANCOS
+# CreateView. Pasamos el formulario
+class AddPostBanco(CreateView):
+    model = Banco
+    fields = '__all__'  #No usamos el form, ya que es 1 solo campo
+    template_name = 'add_banco.html' 
+    
+def BancoView(request, banco):
+    return render(request, 'bancos.html', {})

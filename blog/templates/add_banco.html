@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}Nuevo Banco{% endblock title %}
+
+{% block content %}
+
+{% if user.is_authenticated%}
+<h1>Nuevo Banco</h1>
+<br><br>
+<div class="form-group">
+    <form method="POST">
+        {% csrf_token %}
+        
+        {{form.as_p}}
+        <button class="btn btn-secondary">Agregar Banco</button>
+    </form>
+</div>
+{% else %}
+    <h2>No estas registrado</h2>
+{% endif %}
+{% endblock %}

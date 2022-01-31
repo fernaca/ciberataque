@@ -5,14 +5,14 @@ from .models import Post
 class PostForm(forms.ModelForm): #En este caso usamos ModelForm porque los campos vienen del modelo
     class Meta:
         model = Post
-#        fields = ('title', 'slug', 'autor', 'body')
-        fields = ('title', 'author', 'body')
-        
+        fields = ('title', 'author', 'banco', 'body')
+         
         widgets = {
 # Pasamos CSS (la clase) y parametros
             'title': forms.TextInput(attrs={'class':'form-control', 'placeholder': 'Nombre del caso que le quieras dar'}), 
 #            'slug': forms.TextInput(attrs={'class':'form-control', 'placeholder': 'Slug'}), 
-            'author': forms.Select(attrs={'class':'form-control'}), 
+            'author': forms.Select(attrs={'class':'form-control'}),
+            'banco': forms.Select(attrs={'class':'form-control'}),  
             'body': forms.Textarea(attrs={'class':'form-control', 'placeholder': 'Hechos ocurridos'}), 
         }
         
