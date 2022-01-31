@@ -3,7 +3,7 @@
 
 {% block content %}
 
-
+{% if user.is_authenticated%}
 <h1>Actualizar el caso</h1>
 <br><br>
 <div class="form-group">
@@ -15,7 +15,9 @@
         
     </form>
 
-
+    {% else %}
+    <h2>No estas registrado</h2>
+{% endif %}
 
 </div>
 

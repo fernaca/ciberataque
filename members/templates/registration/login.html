@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
-{% block title %}Nuevo{% endblock title %}
+{% block title %}Login{% endblock title %}
 
 {% block content %}
 
-{% if user.is_authenticated%}
+
 <h1>Nuevo</h1>
 <br><br>
 <div class="form-group">
@@ -14,7 +14,5 @@
         <button class="btn btn-secondary">Crear</button>
     </form>
 </div>
-{% else %}
-    <h2>No estas registrado</h2>
-{% endif %}
+
 {% endblock %}

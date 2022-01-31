@@ -4,7 +4,8 @@
 
 {% block content %}
 
-<h1>Borrr el caso</h1>
+{% if user.is_authenticated%}
+<h1>Borrar el caso</h1>
 <br><br>
 <h3>Borramos: {{post.title}}</h3>
 
@@ -17,5 +18,7 @@
 
     </form>
 </div>
-
+{% else %}
+<h2>No estas registrado</h2>
+{% endif %}
 {% endblock %}
