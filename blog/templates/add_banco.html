@@ -3,7 +3,7 @@
 
 {% block content %}
 
-{% if user.is_authenticated%}
+
 <h1>Nuevo Banco</h1>
 <br><br>
 <div class="form-group">
@@ -14,7 +14,5 @@
         <button class="btn btn-secondary">Agregar Banco</button>
     </form>
 </div>
-{% else %}
-    <h2>No estas registrado</h2>
-{% endif %}
+
 {% endblock %}

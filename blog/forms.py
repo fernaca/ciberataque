@@ -11,7 +11,8 @@ class PostForm(forms.ModelForm): #En este caso usamos ModelForm porque los campo
 # Pasamos CSS (la clase) y parametros
             'title': forms.TextInput(attrs={'class':'form-control', 'placeholder': 'Nombre del caso que le quieras dar'}), 
 #            'slug': forms.TextInput(attrs={'class':'form-control', 'placeholder': 'Slug'}), 
-            'author': forms.Select(attrs={'class':'form-control'}),
+            #'author': forms.Select(attrs={'class':'form-control'}),
+            'author': forms.TextInput(attrs={'class':'form-control', 'id': 'authorz', 'type':'hidden'}), 
             'banco': forms.Select(attrs={'class':'form-control'}),  
             'body': forms.Textarea(attrs={'class':'form-control', 'placeholder': 'Hechos ocurridos'}), 
         }

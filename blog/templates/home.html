@@ -9,8 +9,8 @@
     <ul>
         {% for post in object_list %}
         <li><a href= {% url 'detail' post.pk %}>
-            {{ post.title }} - Banco: {{ post.banco}}</a> - {{ post.author.first_name}}
-             {{ post.author.last_name}}
+            {{ post.title }}</a> <small>- Banco: {{ post.banco}} - {{ post.author.first_name}}
+             {{ post.author.last_name}}</small>
              {% if user.is_authenticated%}
              - <a href="{% url 'update_post' post.pk %}">Editar</a> 
              <a href="{% url 'delete_post' post.pk %}"> Borrar</a>
@@ -19,7 +19,6 @@
 
              {{ post.body|slice:":200" }} </li>
         {% endfor %}
-
-
     </ul>
+
     {% endblock  %}

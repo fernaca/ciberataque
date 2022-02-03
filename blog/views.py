@@ -24,7 +24,7 @@ class AddPostView(CreateView):
     template_name = 'add_post.html' 
 #    fields = '__all__'    #  o se le especifica los que se quiere: fields = ('title','body')
     # Como le pasamos el form_class, va a usar todos
-
+ 
 # Editar
 class UpdatePostView(UpdateView):
     model = Post
@@ -41,8 +41,18 @@ class DeletePostView(DeleteView):
 # CreateView. Pasamos el formulario
 class AddPostBanco(CreateView):
     model = Banco
+    queryset = Banco.objects.order_by('name') 
     fields = '__all__'  #No usamos el form, ya que es 1 solo campo
     template_name = 'add_banco.html' 
     
-def BancoView(request, banco):
-    return render(request, 'bancos.html', {})
+def BancoView(request, bco):
+    #Hacemos el query
+    bancos_posteados = Post.objects.filter(banco = bco)
+    return render(request, 'bancos.html', { 'bco': bco, 'bancos_posteados': bancos_posteados})
+
+def ListBancos(request):
+#    model = Banco
+    #Hacemos el query
+    bancos = Banco.objects.all().order_by('name')
+    return render(request, 'bancos.html', {'bancos': bancos})
+
