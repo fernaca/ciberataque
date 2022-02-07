@@ -10,7 +10,9 @@ class HomeView(ListView):
     queryset = Post.objects.order_by('-created_on') #Negativo para el Sort
 # Otra form de ordenar: ordering = ['-created_on']
     model = Post
-    template_name = 'home.html' 
+    template_name = 'home.html'
+    paginate_by = 2  #Objetos por página
+    context_object_name = 'posts'  # Default: object_list
 
 # DetailView
 class ArticleDetailView(DetailView):

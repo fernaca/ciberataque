@@ -6,28 +6,7 @@
 
     <h1>Posteos</h1>
 
-    <table class="table table-bordered">
-        <thead>
-          <tr>
-            <th>Titulo</th>
-            <th>Banco</th>
-            <th>Creado por</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for post in object_list %}
-            <tr>
-              <td><a href= {% url 'detail' post.pk %}> {{ post.title }}</a></td>
-              <td>{{ post.banco }}</td>
-              <td>{{ post.author.first_name }}</td>
-            </tr>
-          {% endfor %}
-        </tbody>
-      </table>
-
-      {% include "pagination.html" %}
-
-    {% comment %} <ul>
+    <ul>
         {% for post in object_list %}
         <li><a href= {% url 'detail' post.pk %}>
             {{ post.title }}</a> <small>- Banco: {{ post.banco}} - {{ post.author.first_name}}
@@ -40,6 +19,6 @@
 
              {{ post.body|safe|slice:":200" }} </li>
         {% endfor %}
-    </ul> {% endcomment %}
+    </ul>
 
     {% endblock  %}
