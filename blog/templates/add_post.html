@@ -4,28 +4,13 @@
 {% block content %}
 
 {% if user.is_authenticated%}
-<h1>Bancos</h1>
-<ul>
-    {% for post in object_list %}
-    <li><a href= {% url 'detail' post.pk %}>
-        {{ post.title }}</a> <small>- Banco: {{ post.banco}} - {{ post.author.first_name}}
-         {{ post.author.last_name}}</small>
-         {% if user.is_authenticated%}
-         - <a href="{% url 'update_post' post.pk %}">Editar</a> 
-         <a href="{% url 'delete_post' post.pk %}"> Borrar</a>
-         {% endif %}
-         <br><br>
-
-         {{ post.body|slice:":200" }} </li>
-    {% endfor %}
-</ul>
 
 <h1>Nuevo</h1>
-<br><br>
+<br>
 <div class="form-group">
-    <form method="POST">
+    <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-        
+        {{form.media}}
         {{form.as_p}}
         <button class="btn btn-secondary">Crear</button>
     </form>

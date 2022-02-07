@@ -5,7 +5,7 @@ from .models import Post
 class PostForm(forms.ModelForm): #En este caso usamos ModelForm porque los campos vienen del modelo
     class Meta:
         model = Post
-        fields = ('title', 'author', 'banco', 'body')
+        fields = ('title', 'author', 'banco', 'body', 'header_image')
          
         widgets = {
 # Pasamos CSS (la clase) y parametros

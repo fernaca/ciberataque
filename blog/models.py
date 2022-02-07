@@ -1,8 +1,9 @@
+from distutils.command import upload
 from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
 from datetime import datetime, date
-#from ckeditor.fields import RichTextField
+from ckeditor.fields import RichTextField
 
 # Create your models here.
 
@@ -10,7 +11,7 @@ class Banco(models.Model):
     name = models.CharField(max_length=60)
     
     def __str__(self):
-        return (self.name) 
+        return (self.name ) 
 
 # Adonde mandar despues de la creacion
     def get_absolute_url(self):
@@ -18,9 +19,11 @@ class Banco(models.Model):
 
 class Post(models.Model):
     title = models.CharField(max_length=255)
+    header_image = models.ImageField(null=True,blank=True, upload_to="images/")
 #    slug = models.SlugField(max_length=200, unique=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    body = models.TextField()
+    #body = models.TextField()
+    body = RichTextField(blank=True, null=True)
     updated_on = models.DateTimeField(auto_now=True)
     # Fecha y hora
     created_on = models.DateTimeField(auto_now_add=True)
@@ -31,7 +34,7 @@ class Post(models.Model):
 # Default human-readable representation of the object.
 # Django will use it in many places, such as the administration site.
     def __str__(self):
-        return self.title + ' - ' + str(self.author)
+        return 'Creado el: ' + str(self.created_on) + ' - ' + self.title 
 
     class Meta:
         ordering = ['-created_on']

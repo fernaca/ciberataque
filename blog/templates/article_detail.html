@@ -14,7 +14,9 @@
 <hr>
 <br> 
 
-{{post.body}}
+<img src="{{post.header_image.url}}">
+
+{{post.body|safe}}
 
 <br><br>
 <a href="{% url 'home' %}" class="btn btn-secondary">Regresar</a>
